@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:registerEvent name="cmpEvent" type="c:ComboBoxEvent"/>
+    <aura:attribute name="selectedVar" type="string"/>
+    <aura:attribute name="optionsList" type="List" default="[
+                                                            {'label': 'Mango', 'value': 'My Mango'},
+                                                            {'label': 'Tomato', 'value': 'My Tomato'},
+                                                            {'label': 'Apple', 'value': 'My Apple'},
+                                                            ]"/>
+    <lightning:combobox name="progress" label="Status" value="{!v.selectedVar}" placeholder="Select Progress" options="{!v.optionsList }" onchange="{!c.myFunction }"/>
+
+</aura:component>

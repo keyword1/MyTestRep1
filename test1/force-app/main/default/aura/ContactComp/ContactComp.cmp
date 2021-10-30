@@ -1,0 +1,30 @@
+<aura:component controller="CreateContactRecordCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="conList" type="account[]" />
+    <aura:attribute name="display_option" type="string" />
+    <aura:handler name="init" value="{!this}" action="{!c.loadAccs}" /> 
+    
+    <aura:attribute name="childList" type="contact[]" />
+    <aura:attribute name="columns" type="list" />
+    
+    <aura:attribute name="recordId" type="string" />
+    <aura:attribute name="object" type="Account" />
+    
+    <aura:attribute name="options" type="list" />
+    <lightning:combobox label="OptionList" name = "justName" 
+                        value="{!v.display_option}" options="{!v.conList}" onchange="{!c.callContact}" />
+    <div><B>{!v.display_option}</B></div>
+    
+    <lightning:datatable 
+                         keyField = "id"
+                         data = "{!v.childList}"
+                         columns = "{!v.columns}"
+                         />
+    <lightning:recordForm 
+                          recordId="{!v.recordId}"
+                          objectApiName = "Account"
+                          layoutType="Compact"
+                          columns = "2"
+                          mode="edit"
+                          />
+    
+</aura:component>

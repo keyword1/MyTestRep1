@@ -1,0 +1,38 @@
+<aura:component controller= "MyApexClass" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <aura:attribute name="addText" type="string" />
+    <aura:attribute name="accountList" type="Account" />
+    <aura:attribute name="conList" type="Contact" />
+    <aura:attribute name="oppoList" type="Opportunity" />
+    <aura:handler name="init" value="{!this}" action="{!c.getRecordsApex}"/>
+    	  
+    <div>
+        <lightning:card variant="Narrow" title="{!v.accountList.Name}" iconName="standard:account" >
+            <aura:set attribute="actions">
+                <lightning:buttonIcon iconName="utility:down" variant="border-filled" alternativeText="Show More"/>
+            </aura:set>
+            <p class="slds-p-horizontal_small">
+                <p>{!v.accountList.Phone}</p>
+                <span>
+                    <lightning:card variant="Narrow" title="{!v.conList.Name}" iconName="standard:log_a_call" >
+                        <aura:set attribute="actions">
+                            <lightning:buttonIcon iconName="utility:down" variant="border-filled" alternativeText="Show More"/>
+                        </aura:set>
+                        <p class="slds-p-horizontal_small">
+                            {!v.conList.Phone}
+                        </p>
+                    </lightning:card>
+                </span>
+                <span>
+                    <lightning:card variant="Narrow" title="{!v.oppoList.Name}" iconName="standard:reward" footer="Card Footer">
+                        <aura:set attribute="actions">
+                            <lightning:buttonIcon iconName="utility:down" variant="border-filled" alternativeText="Show More"/>
+                        </aura:set>
+                        <p class="slds-p-horizontal_small">
+                            ${!v.oppoList.Amount}
+                        </p>
+                    </lightning:card>
+                </span>
+            </p>
+        </lightning:card>
+    </div>
+</aura:component>

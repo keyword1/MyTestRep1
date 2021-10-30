@@ -1,0 +1,60 @@
+<aura:component controller="MyApexClass" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickAction" access="global" >
+    <aura:attribute name="myRating" type="string"/>
+    <aura:attribute name="accountList" type="Account[]" />
+    <aura:attribute name="Name" type="string" />
+    <aura:attribute name="Rating" type="List" default="[
+                                                       {'label':'Hot', 'value':'Hot'},
+                                                       {'label':'Warm', 'value':'Warm'},
+                                                       {'label':'Cold', 'value':'Cold'},
+                                                       ]" />
+    <aura:attribute name="Type" type="List" default="[
+                                                       {'label':'Prospect', 'value':'Prospect'},
+                                                       {'label':'Customer - Direct', 'value':'Customer - Direct'},
+                                                       {'label':'Customer - Channel', 'value':'Customer - Channel'},
+                                                       {'label':'Channel Partner / Reseller', 'value':'Channel Partner / Reseller'},
+                                                       {'label':'Installation Partner', 'value':'Installation Partner'},
+                                                       {'label':'Other', 'value':'Other'},
+                                                       ]" />
+    <aura:attribute name="Industry" type="List" default="[
+                                                       {'label':'Agriculture', 'value':'Agriculture'},
+                                                       {'label':'Apparel', 'value':'Apparel'},
+                                                       {'label':'Banking', 'value':'Banking'},
+                                                       {'label':'Biotechnology', 'value':'Biotechnology'},
+                                                       {'label':'Chemicals', 'value':'Chemicals'},
+                                                       {'label':'Communications', 'value':'Communications'},
+                                                       ]" />
+    <aura:attribute name="Phone" type="string" />
+    <aura:attribute name="Ownership" type="List" default="[
+                                                       {'label':'Public', 'value':'Public'},
+                                                       {'label':'Private', 'value':'Private'},
+                                                       {'label':'Other', 'value':'Other'},
+                                                       ]" />
+    <div style="padding:15px">
+    <lightning:input name="input1" label="Account Name" type="string" value="{!v.Name}" />
+    <lightning:combobox aura:Id="aRating" name="aRatingName" label="" value="Cold" placeholder="Select Rating" options="{!v.Rating}"/>
+    <lightning:combobox aura:Id="Type" name="Type" label="Type" value="" placeholder="Select Type" options="{!v.Type}"/>
+    <lightning:combobox aura:Id="Industry" name="Industry" label="Industry" value="" placeholder="Select Industry" options="{!v.Industry}"/>
+	<lightning:input variant="brand" label="Phone" type="string" value="{!v.Phone}" />
+    <lightning:combobox aura:Id="Ownership" name="Ownership" label="Ownership" value="" placeholder="Select Ownership" options="{!v.Ownership}"/>
+    
+     <p style="padding:10px 0"><lightning:button variant="brand" label="Submit" onclick="{!c.myFunction}"/></p> 
+     <div>
+     <aura:iteration items="{!v.accountList}" var="acc">
+        <lightning:card footer="Card Footer" title="{!acc.Name}">
+        <aura:set attribute="actions">
+            <lightning:button label="New"/>
+        </aura:set>
+        <p class="slds-p-horizontal_small">
+            Card Body (custom component)
+            <div><span style="padding:0 5px">Rating: {!acc.Rating}</span> <span style="padding:0 5px">Type: {!acc.Type}</span></div>
+            <div><span style="padding:0 5px">Industry: {!acc.Industry}</span> <span style="padding:0 5px">Ownership: {!acc.Ownership}</span></div>
+            <div><span style="padding:0 5px">Phone: {!acc.Phone}</span></div>
+        </p>
+    </lightning:card>
+    </aura:iteration>
+     </div>
+    </div>
+    
+    
+    
+</aura:component>

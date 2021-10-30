@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:registerEvent name="cmpEvent" type="c:Eventevent"/>
+    <aura:attribute name="fNumber" type="integer" />
+    <aura:attribute name="sNumber" type="integer" />
+    <lightning:input type="number"  label="Enter a Number"  value="{!v.fNumber}" />
+    <lightning:input type="number"  label="Enter b Number" value="{!v.sNumber}" />
+    <lightning:button variant="brand" label="Addition" onclick="{!c.myFunction}" />
+</aura:component>

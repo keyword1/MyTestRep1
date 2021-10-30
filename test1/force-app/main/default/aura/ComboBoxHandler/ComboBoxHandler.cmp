@@ -1,0 +1,6 @@
+<aura:component >
+    <aura:attribute name="outputValue" type="string" />
+    <c:ComboBoxComponent cmpEvent="{!c.getFunction}" />
+    <h2 class="header">You Chose the Following:</h2>
+    <lightning:input value="{!v.outputValue}" />
+</aura:component>

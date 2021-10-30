@@ -1,0 +1,7 @@
+<aura:component >
+    <aura:handler event="c:Eventevent" action="{!c.resultFunction}"/>
+    <aura:attribute name="result" type="integer" />
+    <h1>There Result</h1>
+	<lightning:input type="number"  label="Result" value="{!v.result}"/>
+    {!v.result}
+</aura:component>

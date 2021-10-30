@@ -1,0 +1,8 @@
+<aura:component >
+    <aura:attribute name="bVariable1" type="string"/>
+    <aura:handler event="c:StandardEvent" action="{!c.bMethod}"/>
+	<lightning:card title="Component B">
+    I am a component B
+        <div><b>{!v.bVariable1}</b></div>
+    </lightning:card>
+</aura:component>

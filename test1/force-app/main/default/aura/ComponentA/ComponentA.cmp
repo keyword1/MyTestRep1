@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:registerEvent name="eventExample" type="c:StandardEvent"/>
+    <lightning:card title="Component A">
+        <div>I am a component A</div>
+        <div>
+            <lightning:button name="myButton" label="send" variant="brand" onclick="{!c.aMethod}"/>
+        </div>
+    </lightning:card>
+</aura:component>
